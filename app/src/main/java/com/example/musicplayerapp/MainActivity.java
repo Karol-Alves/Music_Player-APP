@@ -87,4 +87,13 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (recyclerView != null){
+            recyclerView.setAdapter(new MusicListAdapter(songsList,  getApplicationContext()));
+        }
+    }
 }
