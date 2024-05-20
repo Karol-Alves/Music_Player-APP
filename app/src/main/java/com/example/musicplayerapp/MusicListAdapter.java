@@ -1,17 +1,18 @@
 package com.example.musicplayerapp;
 
 import android.content.Context;
-//import android.content.Intent;
-//import android.graphics.Color;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-//import androidx.annotation.NonNull;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.ViewHolder>{
@@ -31,11 +32,26 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     }
 
     @Override
-    public void onBindViewHolder( MusicListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(MusicListAdapter.ViewHolder holder, int position) {
         AudioModel songData = songsList.get(position);
         holder.titleTextView.setText(songData.getTitle());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = holder.getAdapterPosition();
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    MyMediaPlayer.getInstance().reset();
+                    MyMediaPlayer.currentIndex = currentPosition;
+                    Intent intent = new Intent(context, MusicPlayerActivity.class);
+                    intent.putExtra("LIST", (Serializable) songsList);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
