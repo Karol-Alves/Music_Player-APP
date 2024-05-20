@@ -1,5 +1,5 @@
 # Player de Música - Android Studio
-Player de música para 4º semestre de ADS, utilizando Android Studio e Java. EM DESENVOLVIMENTO
+Player de música para 4º semestre de ADS, utilizando Android Studio e Java.
 
 Olá Devs e Professor,
 
