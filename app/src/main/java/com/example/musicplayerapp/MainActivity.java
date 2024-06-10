@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView noMusicTextView;
 
-    ArrayList<AudioModel> songsList = new ArrayList<>();
+    ArrayList<AudioModel> songsList = new ArrayList<>(); //Cria a lista de musicas.
 
 
     @Override
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String[] projection = {
+                //Recebe os arquivos mp3 como consumação de dados.
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.DATA,
                 MediaStore.Audio.Media.DURATION

@@ -78,7 +78,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (mediaPlayer != null && fromUser){
-                    mediaPlayer.seekTo(progress);
+                    mediaPlayer.seekTo(progress); //Altera o player para que acompanhe a duração da música
                 }
             }
 
@@ -141,6 +141,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     private void pausePlay (){
 
+        //Pausa o player
+
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
         } else {
@@ -149,6 +151,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
     }
 
     public static String convertToMMSS (String duration){
+
+        //Converte o tempo
         Long millis = Long.parseLong(duration);
         return String.format("%02d:%02d",
         TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
